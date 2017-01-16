@@ -1,4 +1,5 @@
 Printer	4	7
+model	color	type	price
 3001	true	ink-jet	99
 3002	false	laser	239
 3003	true	laser	899
