@@ -244,12 +244,11 @@ public class Relation{
 		Task:
 		What PC models have a speed of at least 3.00?
 		*/
-		System.out.println("Part A:\n");
+		System.out.println("---------------------------------------------------------------------\nPart A:\n");
 		Relation pcOver3 = pc.select(r -> Double.parseDouble(pc.tuples[r][1]) >= 3.0);
 		Relation threeOrGreater = pcOver3.join(product, x -> pcOver3.tuples[x[0]][0].equals(product.tuples[x[1]][1]));
 		threeOrGreater = threeOrGreater.project("model");
 		threeOrGreater.showRelation();
-		// TODO: Projection for part (A)
 
 		/*
 		Task:
@@ -260,7 +259,6 @@ public class Relation{
 		Relation makers = laptopOver3.join(product, x -> laptopOver3.tuples[x[0]][0].equals(product.tuples[x[1]][1]));
 		makers = makers.project("maker");
 		makers.showRelation();
-		// TODO: Projection for part (B)
 
 		/*
 		Task:
