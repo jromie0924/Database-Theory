@@ -1,8 +1,5 @@
-// Relation.java CS6051 2017 Yizong Cheng
-// relational algebra
-// Usage: java Relation
-// need relation files specified in main()
-// implement your queries in main() and use showRelation() to print the results
+// Relation class and methods written by Dr. Yizong Cheng, University of Cincinnati
+// Relation class main method written by Jackson Romie
 
 import java.io.*;
 import java.util.*;
