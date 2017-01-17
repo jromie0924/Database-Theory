@@ -116,25 +116,7 @@ public class Relation{
 		}
 		return JR;
   }
-/*
-	public Relation union(Relation other) {
-		Relation unified = new Relation();
-		numRows = this.tuples.length + other.tuples.length;
-		numCols = this.tuples[0].length + other.tuples.length;
-		unified.tuples = new String[numRows][numCols];
 
-		// Fill new tuples
-		int a;
-		for(a = 0; a < this.tuples.length; a++) {
-			unified.tuples[a] = this.tuples[a];
-		}
-		for(int b = 0; b < other.tuples.length; b++) {
-			unified[a++] = other.tuples[b];
-		}
-
-		unified.name = this.name + " U " + other.name;
-	}
-*/
   public static void main(String[] args){
 		Relation product = new Relation("files/Product.txt");
 		Relation pc = new Relation("files/PC.txt");
@@ -161,7 +143,9 @@ public class Relation{
 		colorPrinters.showRelation();
 		// TODO: projection to show only the printer model numbers
 
-		
-
+		System.out.println("---------------------------------------------------------------------\nPart E:\n");
+		Relation laptopMakers = product.select(r -> product.tuples[r][2].equals("laptop"));
+		Relation pcMakers = product.select(r -> product.tuples[r][2].equals("pc"));
+		Relation laptopOnlyMakers = laptopMakers.select(r -> laptopMakers.tuples[r][0])
   }
 }
