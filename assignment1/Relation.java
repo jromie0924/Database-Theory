@@ -287,7 +287,7 @@ public class Relation{
 
 		/*
 		Task:
-		Find the manufacturers that sell Laptops, but not PC's. (F, G)
+		Find the manufacturers that sell Laptops, but not PC's.
 		*/
 		System.out.println("---------------------------------------------------------------------\nPart E:\n");
 		Relation productProjE = product.project("maker", "type");
