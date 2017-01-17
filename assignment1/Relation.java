@@ -146,6 +146,6 @@ public class Relation{
 		System.out.println("---------------------------------------------------------------------\nPart E:\n");
 		Relation laptopMakers = product.select(r -> product.tuples[r][2].equals("laptop"));
 		Relation pcMakers = product.select(r -> product.tuples[r][2].equals("pc"));
-		Relation laptopOnlyMakers = laptopMakers.select(r -> laptopMakers.tuples[r][0])
+		//Relation laptopOnlyMakers = laptopMakers.select(r -> laptopMakers.tuples[r][0])
   }
 }
