@@ -1,3 +1,5 @@
+// Assignent 1 - Jackson Romie
+
 // Relation class and methods written by Dr. Yizong Cheng, University of Cincinnati
 // Relation class main method written by Jackson Romie
 
@@ -239,6 +241,11 @@ public class Relation{
 		Relation pc = new Relation("files/PC.txt");
 		Relation laptop = new Relation("files/Laptop.txt");
 		Relation printer = new Relation("files/Printer.txt");
+
+		/*
+		 * -------------------------------------- Student work below --------------------------------------
+		 */
+
 
 		/*
 		Task:
