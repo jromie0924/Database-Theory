@@ -286,7 +286,7 @@ public class Relation{
 		Find the model numbers of all color laser printers.
 		*/
 		System.out.println("---------------------------------------------------------------------\nPart D:\n");
-		Relation colorPrinters = printer.select(r -> printer.tuples[r][1].equals("true"));
+		Relation colorPrinters = printer.select(r -> printer.tuples[r][1].equals("true") && printer.tuples[r][2].equals("laser"));
 		colorPrinters = colorPrinters.project("model");
 		colorPrinters.showRelation();
 
