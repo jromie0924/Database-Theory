@@ -1,0 +1,15 @@
+Add boolean functions isEmpty() and isSubsetOf(Relation) to Relation and write Java statements with lambda expressions to check the computer database (Product, PC, Laptop, and Printer) for the following constraints (Exercise 2.5.1).
+
+1. A PC with a processor speed less than 2.00 must not sell for more than $500.
+
+2. A laptop with a screen size less than 15.4 inches must have at least a 100 gigabyte hard disk or sell for less than $1000.
+
+3. No manufacturer of PC's may also make laptops.
+
+4. A manufacturer of a PC must also make a laptop with at least as great a processor speed.
+
+5. If a laptop has a larger main memory than a PC, then the laptop must also have a higher price than the PC.
+
+6. (referential integrity) All models of PCs are also listed in the Product relation.
+
+7. Is hd -> ram a functional dependency in Laptop?  Add and modify the boolean function fd() so that if the answer is no, the tuple pairs violating the constraint will be printed out.
