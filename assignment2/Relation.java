@@ -318,6 +318,13 @@ public class Relation{
 
 		// Part 6
 		System.out.println("\n---------Part 6---------\n");
-		
+		Relation pcModels6 = pc.project("model");
+		Relation productModels6 = product.project("model");
+		Boolean isSubset6 = pcModels6.isSubsetOf(productModels6);
+		if(isSubset6) {
+			System.out.println("All models of PCs are also listed in the product relation.");
+		} else {
+			System.out.println("The product relation does NOT list all models of PCs.");
+		}
 	}
 }
