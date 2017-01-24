@@ -37,9 +37,9 @@ public class Relation{
 			for (int c = 0; c < cols; c++) tuples[r][c] = terms[c];
 		}
 		in.close();
-		}
+	}
 
-		public void showRelation(){
+	public void showRelation(){
 		System.out.println(name + "\t" + cols + "\t" + rows);
 		System.out.print(attributes[0]);
 		for (int c = 1; c < cols; c++) System.out.print("\t" + attributes[c]);
@@ -290,5 +290,22 @@ public class Relation{
 
 		// Part 4
 		System.out.println("\n---------Part 4---------\n");
+		Relation pcModels4 = pc.project("model");
+		Relation pcMakers4 = pcModels4.join(product, x -> pcModels4.tuples[x[0]][0].equals(product.tuples[x[1]][1]));
+		Relation laptopModels4 = laptop.project("model");
+		Relation laptopMakers4 = laptopModels4.join(product, x -> laptopModels4.tuples[x[0]][0].equals(product.tuples[x[1]][1]));
+		Relation pcData4 = pcMakers4.join(pc, x -> pcMakers4.tuples[x[0]][0].equals(pc.tuples[x[1]][0])).project("maker", "model", "speed");
+		Relation laptopData4 = laptopMakers4.join(laptop, x -> laptopMakers4.tuples[x[0]][0].equals(laptop.tuples[x[1]][0])).project("maker", "model", "speed");
+		Relation allData4 = laptopData4.join(pcData4, x -> Double.parseDouble(laptopData4.tuples[x[0]][2]) < Double.parseDouble(pcData4.tuples[x[1]][2]) && laptopData4.tuples[x[0]][0].equals(pcData4.tuples[x[1]][0]));
+		Boolean isEmpty4 = allData4.isEmpty();
+		if(isEmpty4) {
+			System.out.println("This constraint is satisfied.");
+		} else {
+			System.out.println("This constraint is NOT satisfied.");
+		}
+
+		// Part 5
+		System.out.println("\n---------Part 5---------\n");
+		Relation laptopData5 = laptop.project("model", "ram", "price");
 	}
 }
