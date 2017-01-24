@@ -306,6 +306,18 @@ public class Relation{
 
 		// Part 5
 		System.out.println("\n---------Part 5---------\n");
-		Relation laptopData5 = laptop.project("model", "ram", "price");
+		Relation laptopData5 = laptop.project("ram", "price");
+		Relation pcData5 = pc.project("ram", "price");
+		Relation violatingTuples = laptopData5.join(pcData5, x -> Double.parseDouble(laptopData5.tuples[x[0]][0]) > Double.parseDouble(pcData5.tuples[x[1]][0]) && Double.parseDouble(laptopData5.tuples[x[0]][1]) < Double.parseDouble(pcData5.tuples[x[1]][1]));
+		Boolean isEmpty5 = violatingTuples.isEmpty();
+		if(isEmpty5) {
+			System.out.println("This constraint is satisfied.");
+		} else {
+			System.out.println("This constraint is NOT satisfied.");
+		}
+
+		// Part 6
+		System.out.println("\n---------Part 6---------\n");
+		
 	}
 }
