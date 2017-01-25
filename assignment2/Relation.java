@@ -1,7 +1,7 @@
 // Assignent 2 - Jackson Romie
 
 // Relation class and methods written by Dr. Yizong Cheng, University of Cincinnati
-// Relation class main method written by Jackson Romie
+// Relation class main method, fd(), isEmpty(), and isSubsetOf() written by Jackson Romie
 
 import java.io.*;
 import java.util.*;
@@ -295,8 +295,8 @@ public class Relation{
 		Relation printer = new Relation("files/Printer.txt");
 
 		/*
-		 * -------------------------------------- Student work below --------------------------------------
-		 */
+		  -------------------------------------- Student work below --------------------------------------
+		*/
 
 		System.out.print("---------| Jackson Romie | Assignment 2 | Database Theory |---------\n\n");
 
