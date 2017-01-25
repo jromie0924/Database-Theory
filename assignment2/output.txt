@@ -1,0 +1,61 @@
+---------| Jackson Romie | Assignment 2 | Database Theory |---------
+
+
+---------Part 1---------
+
+This constraint is NOT satisfied.
+
+---------Part 2---------
+
+This constraint is NOT satisfied.
+
+---------Part 3---------
+
+This constraint is NOT satisfied.
+
+---------Part 4---------
+
+This constraint is NOT satisfied.
+
+---------Part 5---------
+
+This constraint is NOT satisfied.
+
+---------Part 6---------
+
+All models of PCs are also listed in the product relation.
+
+---------Part 7---------
+
+Violation: 
+240 and 80
+
+Violation: 
+240 and 160
+
+Violation: 
+80 and 120
+
+Violation: 
+80 and 120
+
+Violation: 
+80 and 100
+
+Violation: 
+60 and 80
+
+Violation: 
+60 and 80
+
+Violation: 
+120 and 100
+
+Violation: 
+80 and 160
+
+Violation: 
+120 and 100
+
+HD does not functionally determine RAM for the laptop relation.
+

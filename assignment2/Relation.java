@@ -235,12 +235,56 @@ public class Relation{
 		return R;
 	}
 
-	public Boolean isEmpty() {
+	public boolean isEmpty() {
 		return this.rows == 0;
 	}
 
-	public Boolean isSubsetOf(Relation other) {
+	public boolean isSubsetOf(Relation other) {
 		return this.difference(other).isEmpty();
+	}
+
+	public int getAttrIndex(String attr) {
+		int idx = 0;
+		for (; idx < cols; idx++) {
+			if (attr.equals(attributes[idx])) break;
+		}
+
+		if (idx == cols){
+			System.err.println("attribute " + attr + " not found.");
+			System.exit(1);
+		}
+
+		return idx;
+	}
+
+	public boolean fd(String right, String... left) {
+		boolean isFd = true;
+		int len = left.length;
+		int[] colIndex = new int[len];
+		for(int a = 0; a < len; a++) {
+			colIndex[a] = getAttrIndex(left[a]);
+		}
+
+		int rightCol = this.getAttrIndex(right);
+		for(int r1 = 0; r1 < rows; r1++) {
+			for(int r2 = r1 + 1; r2 < rows; r2++) {
+				int c1 = 0;
+				for(; c1 < left.length; c1++) {
+					int c = colIndex[c1];
+					if(!this.tuples[r1][c].equals(this.tuples[r2][c])) {
+						break;
+					}
+
+					if(!this.tuples[r1][rightCol].equals(this.tuples[r2][rightCol])) {
+						isFd = false;
+						System.out.println("Violation: ");
+						System.out.println(this.tuples[r1][rightCol] + " and " + this.tuples[r2][rightCol] + "\n");
+					}
+				}
+			}
+		}
+
+		return isFd;
 	}
 
 
@@ -254,10 +298,12 @@ public class Relation{
 		 * -------------------------------------- Student work below --------------------------------------
 		 */
 
+		System.out.print("---------| Jackson Romie | Assignment 2 | Database Theory |---------\n\n");
+
 		// Part 1
 		System.out.println("\n---------Part 1---------\n");
 		Relation checkPart1 = pc.select(x -> Double.parseDouble(pc.tuples[x][1]) < 2.00 && Double.parseDouble(pc.tuples[x][4]) < 500);
-		Boolean isEmpty1 = checkPart1.isEmpty();
+		boolean isEmpty1 = checkPart1.isEmpty();
 		if(isEmpty1) {
 			System.out.println("This constraint is satisfied.");
 		} else {
@@ -267,7 +313,7 @@ public class Relation{
 		// Part 2
 		System.out.println("\n---------Part 2---------\n");
 		Relation checkPart2 = laptop.select(x -> Double.parseDouble(laptop.tuples[x][4]) < 15.4 && (Double.parseDouble(laptop.tuples[x][3]) <= 100 && Double.parseDouble(laptop.tuples[x][5]) > 1000));
-		Boolean isEmpty2 = checkPart2.isEmpty();
+		boolean isEmpty2 = checkPart2.isEmpty();
 		if(isEmpty2) {
 			System.out.println("This constraint is satisfied.");
 		} else {
@@ -281,7 +327,7 @@ public class Relation{
 		Relation laptopModels = laptop.project("model");
 		Relation laptopMakers = laptopModels.join(product, x -> laptopModels.tuples[x[0]][0].equals(product.tuples[x[1]][1])).project("maker");
 		Relation pcAndLaptopMakers = laptopMakers.join(pcMakers, x -> laptopMakers.tuples[x[0]][0].equals(pcMakers.tuples[x[1]][0])).unique().project("maker");
-		Boolean isEmpty3 = pcAndLaptopMakers.isEmpty();
+		boolean isEmpty3 = pcAndLaptopMakers.isEmpty();
 		if(isEmpty3) {
 			System.out.println("This constraint is satisfied.");
 		} else {
@@ -297,7 +343,7 @@ public class Relation{
 		Relation pcData4 = pcMakers4.join(pc, x -> pcMakers4.tuples[x[0]][0].equals(pc.tuples[x[1]][0])).project("maker", "model", "speed");
 		Relation laptopData4 = laptopMakers4.join(laptop, x -> laptopMakers4.tuples[x[0]][0].equals(laptop.tuples[x[1]][0])).project("maker", "model", "speed");
 		Relation allData4 = laptopData4.join(pcData4, x -> Double.parseDouble(laptopData4.tuples[x[0]][2]) < Double.parseDouble(pcData4.tuples[x[1]][2]) && laptopData4.tuples[x[0]][0].equals(pcData4.tuples[x[1]][0]));
-		Boolean isEmpty4 = allData4.isEmpty();
+		boolean isEmpty4 = allData4.isEmpty();
 		if(isEmpty4) {
 			System.out.println("This constraint is satisfied.");
 		} else {
@@ -309,7 +355,7 @@ public class Relation{
 		Relation laptopData5 = laptop.project("ram", "price");
 		Relation pcData5 = pc.project("ram", "price");
 		Relation violatingTuples = laptopData5.join(pcData5, x -> Double.parseDouble(laptopData5.tuples[x[0]][0]) > Double.parseDouble(pcData5.tuples[x[1]][0]) && Double.parseDouble(laptopData5.tuples[x[0]][1]) < Double.parseDouble(pcData5.tuples[x[1]][1]));
-		Boolean isEmpty5 = violatingTuples.isEmpty();
+		boolean isEmpty5 = violatingTuples.isEmpty();
 		if(isEmpty5) {
 			System.out.println("This constraint is satisfied.");
 		} else {
@@ -320,11 +366,20 @@ public class Relation{
 		System.out.println("\n---------Part 6---------\n");
 		Relation pcModels6 = pc.project("model");
 		Relation productModels6 = product.project("model");
-		Boolean isSubset6 = pcModels6.isSubsetOf(productModels6);
+		boolean isSubset6 = pcModels6.isSubsetOf(productModels6);
 		if(isSubset6) {
 			System.out.println("All models of PCs are also listed in the product relation.");
 		} else {
 			System.out.println("The product relation does NOT list all models of PCs.");
+		}
+
+		// Part 7
+		System.out.println("\n---------Part 7---------\n");
+		boolean isFd = laptop.fd("hd", "ram");
+		if(isFd) {
+			System.out.println("HD functionally determines RAM for the laptop realtion.");
+		} else {
+			System.out.println("HD does not functionally determine RAM for the laptop relation.\n");
 		}
 	}
 }
