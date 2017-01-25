@@ -1,7 +1,7 @@
 // Assignent 2 - Jackson Romie
 
 // Relation class and methods written by Dr. Yizong Cheng, University of Cincinnati
-// Relation class main method, fd(), isEmpty(), and isSubsetOf() written by Jackson Romie
+// Relation class main method, fd(), isEmpty(), isSubsetOf(), and getAttrIndex() written by Jackson Romie
 
 import java.io.*;
 import java.util.*;
