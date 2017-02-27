@@ -141,7 +141,7 @@ public class FDS2{
     HashSet<Character> Xplus = closure(X);  //  Step 2
     if (X.size() > 0)
       for (char A: Xplus) {
-        if (A is not in X and A is in R1) {
+        if ((!X.contains(A)) && R1.contains(A)) {
           T.add(new FD(X, A));
         }
       }
@@ -150,18 +150,24 @@ public class FDS2{
     // new FD's by closing supersets of X. p.83
     	HashSet<Character> candidates2 = new HashSet<Character>(candidates);
     	for (char c: candidates) {  // go through all superset of X by adding one attribute
-    		candidates2.remove(A);
-    		X.add(A);
+    		candidates2.remove(c);
+    		X.add(c);
     		T.addAll(project(R1, new HashSet<Character>(candidates2),
     			new HashSet<Character>(X)));
-    		X.remove(A);
+    		X.remove(c);
     	}
     }
     return T;
   }
 
   public static void main(String[] args){
-    FDS2 fds = new FDS2(args[0]);
-    fds.BCNFdecompose();
+    FDS2 fdsA = new FDS2("exercise331a.txt");
+    FDS2 fdsB = new FDS2("exercise331b.txt");
+
+    System.out.println("-------- Exercise 3.31 (a) --------");
+    fdsA.BCNFdecompose();
+
+    System.out.println("-------- Exercise 3.31 (b) --------");
+    fdsB.BCNFdecompose();
   }
 }
