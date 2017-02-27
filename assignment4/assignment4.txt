@@ -1,0 +1,1 @@
+FDS.java implements the class FDS (functional dependencies) with method closure. Complete the methods follows, equivalent, and findAKey with demonstrations.  For follows, you can use example3_8.txt as the FDs and AB->D and D->A as the FDs to test, as in Example 3.9.  Find a key for Elmasri1424.txt and do the same to Elmasri1425.txt.

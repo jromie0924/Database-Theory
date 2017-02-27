@@ -1,0 +1,7 @@
+Example 3.8 Functional Dependencies follows BC --> D
+Example 3.8 Functional Dependencies follows D --> E
+Example 3.8 Functional Dependencies follows AB --> C
+Example 3.8 Functional Dependencies follows BC --> A
+
+Key for Elmasri1424: AB
+Key for Elmasri1425: ABD
